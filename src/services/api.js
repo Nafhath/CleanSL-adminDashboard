@@ -40,6 +40,8 @@ const handleError = (error) => {
   console.error('API Error:', error);
   if (error.response?.status === 401) {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
+    window.dispatchEvent(new Event('authchange'));
     window.location.href = '/login';
   }
   throw error;
@@ -52,6 +54,8 @@ export const userAPI = {
   create: (data) => api.post('/users', data).then(r => r.data).catch(handleError),
   update: (id, data) => api.put(`/users/${id}`, data).then(r => r.data).catch(handleError),
   delete: (id) => api.delete(`/users/${id}`).then(r => r.data).catch(handleError),
+  getAdmins: () => api.get('/users/admins').then(r => r.data).catch(handleError),
+  getCurrentAdmin: () => api.get('/users/auth/me').then(r => r.data).catch(handleError),
   login: (email, password) => api.post('/users/auth/login', { email, password }).then(r => r.data).catch(handleError),
   getDrivers: () => api.get('/users/role/driver').then(r => r.data).catch(handleError)
 };
