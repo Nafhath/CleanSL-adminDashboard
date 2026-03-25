@@ -16,15 +16,6 @@ export default function Login({ onLogin }) {
     setLoading(true);
 
     try {
-      if (email === 'admin@cleansl.com' && password === 'admin123') {
-        localStorage.setItem('authToken', 'test-token-123');
-        localStorage.setItem('user', JSON.stringify({ firstName: 'Demo', lastName: 'Admin', role: 'admin' }));
-        window.dispatchEvent(new Event('authchange'));
-        onLogin?.();
-        navigate('/');
-        return;
-      }
-
       const response = await userAPI.login(email, password);
       if (response && response.token) {
         // Store token in localStorage
@@ -102,7 +93,7 @@ export default function Login({ onLogin }) {
 
           {/* Footer Info */}
           <p className="text-xs text-center text-gray-500 font-medium">
-            CleanSL Admin Dashboard • Powered by React + Express
+            CleanSL Admin Dashboard
           </p>
         </form>
       </div>

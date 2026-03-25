@@ -45,6 +45,44 @@ const Dashboard = ({ onLogout }) => {
     }
   }, []);
 
+  const currentPeriodLabel = React.useMemo(() => {
+    const now = new Date();
+
+    if (timeRange === 'Day') {
+      return now.toLocaleDateString(undefined, {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      });
+    }
+
+    if (timeRange === 'Week') {
+      const start = new Date(now);
+      start.setDate(now.getDate() - now.getDay());
+      const end = new Date(start);
+      end.setDate(start.getDate() + 6);
+
+      return `${start.toLocaleDateString(undefined, {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      })} - ${end.toLocaleDateString(undefined, {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      })}`;
+    }
+
+    if (timeRange === 'Year') {
+      return now.getFullYear().toString();
+    }
+
+    return now.toLocaleDateString(undefined, {
+      month: 'short',
+      year: 'numeric'
+    });
+  }, [timeRange]);
+
   const handleLogout = () => {
     localStorage.removeItem('authToken');
     localStorage.removeItem('user');
@@ -92,7 +130,7 @@ const Dashboard = ({ onLogout }) => {
         <header className="h-20 flex items-center justify-between px-6 shrink-0 rounded-[32px] mb-4 bg-theme-card border border-white/40">
           <h2 className="text-3xl font-serif text-theme-text pr-4">
             Good Morning, <span className="text-theme-accent font-sans font-bold text-2xl">
-              {user?.firstName || user?.email?.split('@')[0] || 'User'}
+              {user?.name || user?.firstName || user?.email?.split('@')[0] || 'User'}
             </span>
           </h2>
           
@@ -123,7 +161,7 @@ const Dashboard = ({ onLogout }) => {
               onClick={() => alert("Date picker functionality not configured")}
             >
               <Calendar size={14} className="text-theme-muted" />
-              1 Dec 2026 - 31 Dec 2026
+              {currentPeriodLabel}
             </button>
 
             {/* Logout Button */}
