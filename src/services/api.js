@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const DEFAULT_LOCAL_API_URL = 'http://localhost:8000';
-const DEFAULT_REMOTE_API_URL = 'https://cleansl-admin-1.onrender.com';
+const DEFAULT_REMOTE_API_URL = 'https://cleansl-backend-9d4g.onrender.com';
 
 const resolveApiBaseUrl = () => {
   if (process.env.REACT_APP_API_URL) {
