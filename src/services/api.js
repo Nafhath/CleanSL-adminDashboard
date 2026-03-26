@@ -100,6 +100,12 @@ export const taskAPI = {
   delete: (id) => api.delete(`/tasks/${id}`).then(r => r.data).catch(handleError)
 };
 
+// Driver report endpoints
+export const driverReportAPI = {
+  getAll: (params = {}) => api.get('/mobile/admin/driver-reports', { params }).then(r => r.data).catch(handleError),
+  updateStatus: (id, status) => api.patch(`/mobile/admin/driver-reports/${id}`, { status }).then(r => r.data).catch(handleError)
+};
+
 // Violation endpoints
 export const violationAPI = {
   getAll: (params = {}) => api.get('/violations', { params }).then(r => r.data).catch(handleError),
