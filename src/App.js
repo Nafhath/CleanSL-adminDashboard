@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Overview from './pages/Overview';
+import Operations from './pages/Operations';
 import LiveMap from './pages/LiveMap';
 import Complaints from './pages/Complaints';
 import FleetStatus from './pages/FleetStatus';
@@ -62,6 +63,7 @@ function App() {
         {isAuthenticated ? (
           <Route path="/" element={<Dashboard onLogout={handleLogout} />}>
             <Route index element={<Overview />} />
+            <Route path="operations" element={<Operations />} />
             <Route path="live-map" element={<LiveMap />} />
             <Route path="complaints" element={<Complaints />} />
             <Route path="violations" element={<Violations />} />

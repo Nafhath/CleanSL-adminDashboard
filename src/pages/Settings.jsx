@@ -68,8 +68,8 @@ export default function Settings() {
 
   const documents = [
     { title: 'Context Log', detail: 'Workspace handoff summary for future Codex/model sessions.', source: 'CODEX_CONTEXT_LOG.md' },
-    { title: 'Frontend Handoff README', detail: 'Admin frontend change summary and verification notes.', source: 'cleansl-admin/README.md' },
-    { title: 'Root Setup Guide', detail: 'Workspace startup and deployment guidance.', source: 'SETUP_GUIDE.md' }
+    { title: 'Frontend README', detail: 'Frontend-specific setup and handoff notes for the reorganized admin dashboard.', source: 'Admin Dashboard/Frontend/README.md' },
+    { title: 'Frontend Setup Guide', detail: 'Workspace startup and frontend environment guidance.', source: 'Admin Dashboard/Frontend/SETUP.md' }
   ];
 
   return (

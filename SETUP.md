@@ -1,37 +1,54 @@
 # CleanSL Admin Frontend Setup
 
-## Active Backend
+## Active Workspace Pairing
 
-This frontend is paired with the workspace backend at:
+This frontend is paired with:
 
-```text
-..\backend
-```
+- Frontend root: `Admin Dashboard/Frontend`
+- Backend root: `Admin Dashboard/Backend`
 
-The API client expects:
+## Local Backend Startup
 
-```text
-http://localhost:8000
-```
-
-## Start Backend
+From the workspace root:
 
 ```bash
-cd ..\backend
+cd "Admin Dashboard/Backend"
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 ```
 
-## Start Frontend
+## Local Frontend Startup
+
+From the frontend root:
 
 ```bash
 npm install
 npm start
 ```
 
-## URLs
+## Local URLs
 
 - Frontend: `http://localhost:3000`
 - Backend: `http://localhost:8000`
+
+## Remote Deployment Pairing
+
+- Backend: `https://cleansl-backend-9d4g.onrender.com`
+- Frontend: Vercel deployment
+
+If needed, set:
+
+```env
+REACT_APP_API_URL=https://cleansl-backend-9d4g.onrender.com
+```
+
+## Data Flow Reminder
+
+The frontend does not talk to Supabase directly.
+
+Current production flow:
+
+- mobile app -> Supabase
+- admin frontend -> backend -> Supabase

@@ -82,6 +82,24 @@ export const complaintAPI = {
   getStats: () => api.get('/complaints/stats/overview').then(r => r.data).catch(handleError)
 };
 
+// Address endpoints
+export const addressAPI = {
+  getAll: () => api.get('/addresses').then(r => r.data).catch(handleError),
+  getById: (id) => api.get(`/addresses/${id}`).then(r => r.data).catch(handleError),
+  create: (data) => api.post('/addresses', data).then(r => r.data).catch(handleError),
+  update: (id, data) => api.put(`/addresses/${id}`, data).then(r => r.data).catch(handleError),
+  delete: (id) => api.delete(`/addresses/${id}`).then(r => r.data).catch(handleError)
+};
+
+// Collection task endpoints
+export const taskAPI = {
+  getAll: (params = {}) => api.get('/tasks', { params }).then(r => r.data).catch(handleError),
+  getById: (id) => api.get(`/tasks/${id}`).then(r => r.data).catch(handleError),
+  create: (data) => api.post('/tasks', data).then(r => r.data).catch(handleError),
+  update: (id, data) => api.put(`/tasks/${id}`, data).then(r => r.data).catch(handleError),
+  delete: (id) => api.delete(`/tasks/${id}`).then(r => r.data).catch(handleError)
+};
+
 // Violation endpoints
 export const violationAPI = {
   getAll: (params = {}) => api.get('/violations', { params }).then(r => r.data).catch(handleError),

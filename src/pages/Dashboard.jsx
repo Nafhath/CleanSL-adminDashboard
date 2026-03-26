@@ -110,6 +110,7 @@ const Dashboard = ({ onLogout }) => {
 
         <nav className="flex-1 space-y-1 overflow-y-auto custom-scrollbar">
           <NavItem icon={<LayoutGrid size={20} />} label="Overview" to="/" active={isOverview} />
+          <NavItem icon={<Calendar size={20} />} label="Operations" to="/operations" active={location.pathname === '/operations'} />
           <NavItem icon={<Map size={20} />} label="Collection Progress" to="/live-map" active={location.pathname === '/live-map'} />
           <NavItem icon={<Truck size={20} />} label="Driver Log" to="/driver-log" active={location.pathname === '/driver-log'} />
           <NavItem icon={<FileText size={20} />} label="Complaints" to="/complaints" active={location.pathname === '/complaints'} />
